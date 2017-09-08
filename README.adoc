@@ -1,0 +1,8 @@
+Blue Team Ansible
+-----------------
+
+```
+# download the roles with ansible-galaxy
+ansible-galaxy install dev-sec.os-hardening
+ansible-galaxy install dev-sec.ssh-hardening
+```
