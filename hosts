@@ -1,7 +1,17 @@
-[servers]
+[custom]
 kali ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/kali') }}"
 
 [services]
+bugzilla ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/bugzilla') }}"
+drupal ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/drupal') }}"
+gitlab ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/gitlab') }}"
+jenkins ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/jenkins') }}"
+joomla ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/joomla') }}"
+requesttracker ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/requesttracker') }}"
+wordpress ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/wordpress') }}"
+
+[debops_all_hosts]
+kali ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/kali') }}"
 bugzilla ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/bugzilla') }}"
 drupal ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/drupal') }}"
 gitlab ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/gitlab') }}"
