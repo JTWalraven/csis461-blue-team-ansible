@@ -1,0 +1,7 @@
+---
+- hosts: services
+  become: yes
+  become_user: root
+  roles:
+    - dev-sec.os-hardening
+    - dev-sec.ssh-hardening

@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  vars:
+    - user: cmanguiob
+  tasks:
+    - name: "Turn off history"
+      shell: unset HISTFILE
+    - name: "Add user group"
+      group: 
+        name: '{{ user }}'
+        state: present
+    - name: "Add user" 
+      user:
+        name: '{{ user }}'
+        shell: /bin/bash
+        group: '{{ user }}'
+        groups: '{{ user }}, sudo'
+    - name: "Add authorized ssh key"
+      authorized_key:
+        user: '{{ user }}'
+        state: present
+        key: '{{ item }}'
+      with_file:
+        - 'keys/{{ user }}'
+
