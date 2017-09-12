@@ -10,3 +10,5 @@ joomla ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/joom
 requesttracker ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/requesttracker') }}"
 wordpress ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/wordpress') }}"
 
+[jenkins]
+jenkins ansible_sudo=True ansible_sudo_pass="{{ lookup('pipe', 'pass servers/jenkins') }}"

@@ -1,0 +1,31 @@
+---
+- name: Install apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Install lsb-release
+  apt:
+    name: lsb-release
+    state: present
+
+- name: Add Apt key for Wazuh
+  apt_key:
+    url: https://packages.wazuh.com/key/GPG-KEY-WAZUH
+    state: present
+
+- name: Get Codename for distribution
+  shell: lsb_release -cs
+  register: codename
+
+- name: Add codename to repository
+  copy:
+    content: "deb https://packages.wazuh.com/apt {{ codename }} main"
+    dest: "/etc/apt/sources.list.d/wazuh.list"
+
+- name: Install Wazuh agent
+  apt:
+    name: wazuh-agent
+    update_cache: yes
+    notify: 
+      - register agent
