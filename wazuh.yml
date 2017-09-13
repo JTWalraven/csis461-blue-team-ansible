@@ -1,0 +1,6 @@
+---
+- hosts: jenkins
+  become: yes
+  become_user: root
+  roles:
+    - wazuh

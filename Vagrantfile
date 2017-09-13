@@ -11,6 +11,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
-    ansible.playbook = "firewall.yml"
+    ansible.playbook = "multifactor.yml"
   end
 end

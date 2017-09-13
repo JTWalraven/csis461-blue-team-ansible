@@ -9,23 +9,23 @@
     name: lsb-release
     state: present
 
-- name: Add Apt key for Wazuh
-  apt_key:
-    url: https://packages.wazuh.com/key/GPG-KEY-WAZUH
-    state: present
+    #- name: Add Apt key for Wazuh
+    #apt_key:
+    #url: https://packages.wazuh.com/key/GPG-KEY-WAZUH
+    #state: present
 
-- name: Get Codename for distribution
-  shell: lsb_release -cs
-  register: codename
-
-- name: Add codename to repository
-  copy:
-    content: "deb https://packages.wazuh.com/apt {{ codename }} main"
-    dest: "/etc/apt/sources.list.d/wazuh.list"
+    #- name: Add codename to repository
+    #copy:
+    #content: "deb https://packages.wazuh.com/apt wheezy main"
+    #dest: "/etc/apt/sources.list.d/wazuh.list"
 
 - name: Install Wazuh agent
   apt:
     name: wazuh-agent
     update_cache: yes
-    notify: 
-      - register agent
+
+- name: register agent
+  shell: openssl req -x509 -batch -nodes -days 365 -newkey rsa:2048 -keyout /var/ossec/etc/sslmanager.key -out /var/ossec/etc/sslmanager.cert
+
+- name: run auth client
+  command: /var/ossec/bin/agent-auth -m 34.232.248.103
