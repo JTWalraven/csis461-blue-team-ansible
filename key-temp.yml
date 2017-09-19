@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: "Add authorized ssh key"
+      authorized_key:
+        user: 'jwalraven'
+        state: present
+        key: '{{ item }}'
+      with_file:
+        - 'keys/cmanguiob'
+

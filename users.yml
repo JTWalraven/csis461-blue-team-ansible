@@ -3,7 +3,7 @@
   become: yes
   become_user: root
   vars:
-    - user: cmanguiob
+    - user: sthompson
   tasks:
     - name: "Turn off history"
       shell: unset HISTFILE

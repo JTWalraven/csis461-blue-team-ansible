@@ -1,0 +1,5 @@
+---
+# tasks file for resolv
+- name: add the resolv.conf file to /etc/
+  copy: src=resolv.conf
+        dest=/etc/resolv.conf
